@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- input fields -->
+  <ion-list text-center>
+    <ion-item padding>
+      <ion-icon item-left name="person"></ion-icon>
+      <ion-input [(ngModel)]="fullName" type="text" placeholder="Full Name"></ion-input>
+    </ion-item>
+    <ion-item padding>
+      <ion-icon item-left name="person"></ion-icon>
+      <ion-input [(ngModel)]="userName" type="text" placeholder="User Name"></ion-input>
+    </ion-item>
+    <ion-item padding>
+      <ion-icon item-left name="mail"></ion-icon>
+      <ion-input [(ngModel)]="email" type="text" placeholder="E-mail Address"></ion-input>
+    </ion-item>
+    <ion-item padding>
+      <ion-icon item-left name="lock"></ion-icon>
+      <ion-input [(ngModel)]="password" type="password" placeholder="Password"></ion-input>
+    </ion-item>
+    <ion-item padding>
+      <ion-icon item-left name="lock"></ion-icon>
+      <ion-input [(ngModel)]="confirmPassword" type="password" placeholder="Confirm Password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+    <button class="signupBtn" ion-button full round (tap)="loginEvent()">
+      Sign In
+    </button>
+
+</ion-content>

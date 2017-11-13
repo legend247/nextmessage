@@ -1,0 +1,29 @@
+<ion-content padding>
+
+  <div class="logoSpace" text-center>
+    <h1 padding>NextMessage</h1>
+  </div>
+
+
+  <!-- input fields -->
+  <ion-list text-center>
+    <ion-item padding>
+      <ion-icon item-left name="person"></ion-icon>
+      <ion-input [(ngModel)]="email" type="text" placeholder="Email Address"></ion-input>
+    </ion-item>
+    <ion-item padding>
+      <ion-icon item-left name="lock"></ion-icon>
+      <ion-input [(ngModel)]="password" type="password"  placeholder="Password"></ion-input>
+    </ion-item>
+
+    <button class="loginBtn" padding ion-button full round (tap)="doLogin()"> Sign In </button>
+
+      <button class="signupBtn" ion-button medium clear (tap)="goToSignUp()">
+        Sign Up
+      </button>
+
+  </ion-list>
+
+
+
+</ion-content>
