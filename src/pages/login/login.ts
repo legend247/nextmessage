@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, Storage, localStorage } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
@@ -36,19 +36,15 @@ export class LoginPage {
 
     }).then(() => {
       this.navCtrl.push(TabsPage);
-    }).catch(() => {
-    console.log('view was not dismissed');
-    this.showToast();
-  });
-  this.userId().then(({data})=>{
-    // console.log("USERDATA ID: ", data, this.email);
-    if( data.User != null){
-    window.localStorage.setItem('userID',data.User.id);
-  } else{
-    console.log("USERDATA ID: ", data, this.email);
-  }
-
-  });
+    });
+  // this.userId().then(({data})=>{
+  //   // console.log("USERDATA ID: ", data, this.email);
+  //   if( data.User != null){
+  //     window.localStorage.setItem('userID',data.User.id);
+  //   } else{
+  //     console.log("USERDATA ID: ", data, this.email);
+  //   }
+  // });
 }
 
   login(){

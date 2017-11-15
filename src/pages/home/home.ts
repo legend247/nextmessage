@@ -13,7 +13,7 @@ import 'rxjs/add/operator/toPromise';
 })
 export class HomePage {
 
-allConversations = {};
+allConversations = <any> {};
 conversations = <any>[];
 userId = "";
 
@@ -42,8 +42,9 @@ userId = "";
       fetchPolicy: "network-only"
     }).subscribe(({data}) => {
       console.log("HOME DATA: ",data);
-      this.conversations = data.allConversations;
-      this.userId = data.user.id;
+      this.conversations = data;
+      this.userId = this.conversations.user.id;
+      this.conversations = this.conversations.allConversations;
     });
   }
 

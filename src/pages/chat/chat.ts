@@ -14,7 +14,7 @@ export class Chat {
 
   conversation = {};
   conversationId = this.navParams.get("conversation");
-  lastMessage = {};
+  lastMessage = <any> [];
   lastMessageText = "";
   userId = this.navParams.get("userId");
   newMessage ="";

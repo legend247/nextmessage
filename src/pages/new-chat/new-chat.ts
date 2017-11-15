@@ -26,8 +26,10 @@ export class NewChatPage {
 
     ngOnInit() {
       this.allUserInfo().then(({data}) => {
-        this.userId = data.user.id;
-        this.allUsers = data;
+        let temp = <any>[];
+        temp = data;
+        this.userId = temp.user.id;
+        this.allUsers = temp;
         // this.userId = this.allSections.user.id;
         this.allUsers = this.allUsers.allUsers;
         // this.allSections.sort(this.compare);
@@ -106,7 +108,9 @@ export class NewChatPage {
       }
     }).toPromise().then(({data})=>{
       console.log(data)
-      this.navCtrl.pop().then(this.navCtrl.push(Chat, {conversation : data.createConversation.id, userId: user.id }))
+      let temp = <any>{};
+      temp = data;
+      this.navCtrl.pop().then( () => this.navCtrl.push(Chat, {conversation : temp.createConversation.id, userId: user.id }))
     })
 
   }
