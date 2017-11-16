@@ -37,14 +37,15 @@ export class LoginPage {
     }).then(() => {
       this.navCtrl.push(TabsPage);
     });
-  // this.userId().then(({data})=>{
-  //   // console.log("USERDATA ID: ", data, this.email);
-  //   if( data.User != null){
-  //     window.localStorage.setItem('userID',data.User.id);
-  //   } else{
-  //     console.log("USERDATA ID: ", data, this.email);
-  //   }
-  // });
+  this.userId().then(({data})=>{
+    let temp = data;
+    // console.log("USERDATA ID: ", data, this.email);
+    if( temp.allUsers != null){
+      window.localStorage.setItem('userID',temp.allUsers[0].id);
+    } else{
+      console.log("USERDATA ID: ", data, this.email);
+    }
+  });
 }
 
   login(){
@@ -68,8 +69,8 @@ export class LoginPage {
   userId(){
     return this.apollo.query({
       query: gql`
-      query User($email: String!){
-        User(email: $email){
+      query allUsers($email: String!){
+        allUsers(filter: {email: $email}){
           id
         }
       }

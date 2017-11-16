@@ -9,13 +9,21 @@
 
   <ion-list *ngIf="conversations.length!=0">
 
-    <button ion-item *ngFor="let conversation of conversations"
+    <ion-item-sliding>
+      <ion-item button *ngFor="let conversation of conversations"
               (click)="navChat(conversation)"
               >
-      <span *ngFor="let user of conversation.users">
+      <div *ngFor="let user of conversation.users">
         <h2 *ngIf="user.id != userId">{{user.userName}}</h2>
-      </span>
-    </button>
+      </div>
+    </ion-item>
+
+    <ion-item-options side="right">
+        <button ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
 
   </ion-list>
 </ion-content>
