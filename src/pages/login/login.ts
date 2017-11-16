@@ -18,6 +18,7 @@ export class LoginPage {
   password: "";
   confirmPassword: "";
   userInfo = <any>{};
+  userID = <any>{};
 
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo,
@@ -38,13 +39,9 @@ export class LoginPage {
       this.navCtrl.push(TabsPage);
     });
   this.userId().then(({data})=>{
-    let temp = data;
-    // console.log("USERDATA ID: ", data, this.email);
-    if( temp.allUsers != null){
-      window.localStorage.setItem('userID',temp.allUsers[0].id);
-    } else{
-      console.log("USERDATA ID: ", data, this.email);
-    }
+    this.userID = data;
+    this.userID = this.userID.user.id;
+    window.localStorage.setItem('userID',this.userID);
   });
 }
 
@@ -69,14 +66,12 @@ export class LoginPage {
   userId(){
     return this.apollo.query({
       query: gql`
-      query allUsers($email: String!){
-        allUsers(filter: {email: $email}){
+      query {
+        user {
           id
         }
       }
-      `, variables:{
-        email: this.email
-      }
+      `
     }).toPromise();
   }
 
