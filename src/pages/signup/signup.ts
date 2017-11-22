@@ -3,8 +3,6 @@ import { NavController, ToastController, Platform} from 'ionic-angular';
 
 import { TabsPage } from '../tabs/tabs';
 
-// import { Camera, CameraOptions } from '@ionic-native/camera';
-
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
 import 'rxjs/add/operator/toPromise';
@@ -26,7 +24,8 @@ export class SignupPage {
   confirmPassword: "";
   userInfo = <any>{};
 
-  constructor(public navCtrl: NavController, public apollo: Angular2Apollo,
+  constructor(public navCtrl: NavController,
+              public apollo: Angular2Apollo,
               public toastCtrl: ToastController,
               private platform: Platform ) {
 

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
-import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 
 import { Angular2Apollo } from 'angular2-apollo';
@@ -14,10 +13,9 @@ import 'rxjs/add/operator/toPromise';
 })
 export class LoginPage {
 
-  email: "";
-  password: "";
+  EMAIL: "";
+  PASSWORD: "";
   confirmPassword: "";
-  userInfo = <any>{};
   userID = <any>{};
 
   constructor(public navCtrl: NavController,
@@ -57,8 +55,8 @@ export class LoginPage {
         }
         `,
         variables: {
-          email: this.email,
-          password: this.password,
+          email: this.EMAIL,
+          password: this.PASSWORD,
         }
       }).toPromise();
   }

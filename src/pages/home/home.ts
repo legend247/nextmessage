@@ -13,22 +13,18 @@ import 'rxjs/add/operator/toPromise';
 })
 export class HomePage {
 
-allConversations = <any> {};
+allConversations = <any>[];
 conversations = <any>[];
-userId = "";
+userId = window.localStorage.getItem('userID');
 
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo) {
-
   }
 
   ionViewDidLoad(){
     this.apollo.watchQuery({
       query: gql`
         query {
-          user {
-            id
-          }
           allConversations {
             id
             users {
@@ -42,9 +38,8 @@ userId = "";
       fetchPolicy: "network-only"
     }).subscribe(({data}) => {
       console.log("HOME DATA: ",data);
-      this.conversations = data;
-      this.userId = this.conversations.user.id;
-      this.conversations = this.conversations.allConversations;
+      this.allConversations = data;
+      this.conversations = this.allConversations.allConversations;
     });
   }
 
@@ -55,7 +50,7 @@ userId = "";
 
   navChat(conversation) {
     console.log("BEFORE CHAT: ", conversation);
-    this.navCtrl.push(Chat, {conversation : conversation.id, userId: this.userId })
+    this.navCtrl.push(Chat, {conversation : conversation.id})
   }
 
 }

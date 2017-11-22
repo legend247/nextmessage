@@ -1,6 +1,5 @@
-import { Component,Injectable } from '@angular/core';
-import { NavController, NavParams, Content} from 'ionic-angular';
-import {Http, Headers, Response} from '@angular/http';
+import { Component} from '@angular/core';
+import { NavController, NavParams} from 'ionic-angular';
 
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
@@ -16,7 +15,7 @@ export class Chat {
   conversationId = this.navParams.get("conversation");
   lastMessage = <any> [];
   lastMessageText = "";
-  userId = this.navParams.get("userId");
+  userId = window.localStorage.getItem("userID");
   newMessage ="";
 
   // @ViewChild(Content) content: Content;
