@@ -7,7 +7,6 @@ import { ApolloModule } from 'angular2-apollo';
 import { provideClient } from './client';
 
 import { AboutPage } from '../pages/about/about';
-// import { ContactPage } from '../pages/contact/contact';
 import { NewChatPage } from '../pages/new-chat/new-chat';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -25,7 +24,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SignupPage,
     Chat,
     NewChatPage,
-    // ContactPage,
     HomePage,
     TabsPage
   ],
@@ -42,7 +40,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SignupPage,
     Chat,
     NewChatPage,
-    // ContactPage,
     HomePage,
     TabsPage
   ],

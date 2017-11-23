@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 
 import { AboutPage } from '../about/about';
-// import { ContactPage } from '../contact/contact';
-import { Chat } from '../chat/chat';
-
 import { HomePage } from '../home/home';
 
 @Component({

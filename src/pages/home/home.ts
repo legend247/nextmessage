@@ -16,6 +16,7 @@ export class HomePage {
 allConversations = <any>[];
 conversations = <any>[];
 userId = window.localStorage.getItem('userID');
+allData = {};
 
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo) {
@@ -68,9 +69,8 @@ userId = window.localStorage.getItem('userID');
         conversationId: conversation.id
       }
     }).toPromise().then(({data})=>{
-      var allData = data;
-      var messages = allData.allConversations[0].messages;
-      console.log("data",allData.allConversations[0].messages);
+      this.allData = data;
+      let messages = (this.allData as any).allConversations[0].messages;
       for(let message of messages){
         this.apollo.mutate({
           mutation: gql`
@@ -102,7 +102,7 @@ userId = window.localStorage.getItem('userID');
       });
 
     });
-    
+
   }
 
 }

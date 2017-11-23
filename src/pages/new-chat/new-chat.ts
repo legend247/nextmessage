@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { Chat } from '../chat/chat';
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
 import 'rxjs/add/operator/toPromise';
 
-@IonicPage()
+
 @Component({
   selector: 'page-new-chat',
   templateUrl: 'new-chat.html',
