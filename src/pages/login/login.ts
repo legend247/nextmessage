@@ -35,12 +35,17 @@ export class LoginPage {
 
     }).then(() => {
       this.navCtrl.push(TabsPage);
+    }).catch(() => {
+      console.log('view was not dismissed');
+      this.showToast();
+      return;
     });
-  this.userId().then(({data})=>{
-    this.userID = data;
-    this.userID = this.userID.user.id;
-    window.localStorage.setItem('userID',this.userID);
-  });
+
+    this.userId().then(({data})=>{
+      this.userID = data;
+      this.userID = this.userID.user.id;
+      window.localStorage.setItem('userID',this.userID);
+    });
 }
 
   login(){

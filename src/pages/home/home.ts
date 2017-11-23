@@ -43,7 +43,6 @@ userId = window.localStorage.getItem('userID');
     });
   }
 
-
   newChat(){
     this.navCtrl.push(NewChatPage);
   }
@@ -51,6 +50,27 @@ userId = window.localStorage.getItem('userID');
   navChat(conversation) {
     console.log("BEFORE CHAT: ", conversation);
     this.navCtrl.push(Chat, {conversation : conversation.id})
+  }
+
+  deleteConversation(conversation){
+    // console.log(conversation);
+      this.apollo.mutate({
+        mutation: gql`
+        mutation deleteConversation($conversationID: ID!){
+        	deleteConversation(id:$conversationID){
+            id
+          }
+        }
+        `,variables:{
+          conversationID: conversation.id
+        }
+      }).subscribe(({data})=>{
+        let index = allConversations.indexOf( x => conversation.id == x.id);
+        console.log(index);
+        if(index > -1){
+          allConversations.splice(index,1);
+        }
+      });
   }
 
 }

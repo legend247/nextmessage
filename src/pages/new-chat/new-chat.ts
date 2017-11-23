@@ -12,9 +12,6 @@ import 'rxjs/add/operator/toPromise';
   templateUrl: 'new-chat.html',
 })
 export class NewChatPage {
-  userSearch = "";
-  users = <any>[];
-  userId = "";
   allUsers = <any>[];
   queryList = <any>[];
   USER = <any>{};
@@ -23,7 +20,6 @@ export class NewChatPage {
               public navParams: NavParams,
               public apollo: Angular2Apollo) {
   }
-
 
     ngOnInit() {
       this.allUserInfo().then(({data}) => {
@@ -82,7 +78,7 @@ export class NewChatPage {
       if(v.userName && q) {
         if (v.userName.toLowerCase().indexOf(q.toLowerCase()) > -1) {
           // console.log(v);
-          if(v.id  == this.userId){
+          if(v.id  == this.USER.id){
             console.log("This is you: ",v);
           } else {
             console.log("This is not you: ", v);
