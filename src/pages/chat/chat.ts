@@ -16,7 +16,7 @@ export class Chat {
   lastMessage = <any> [];
   lastMessageText = "";
   userId = window.localStorage.getItem("userID");
-  newMessage ="";
+  newMessage = "";
 
   // @ViewChild(Content) content: Content;
 

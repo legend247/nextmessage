@@ -24,7 +24,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     SignupPage,
     Chat,
-    NewChatPage,  
+    NewChatPage,
     // ContactPage,
     HomePage,
     TabsPage

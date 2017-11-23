@@ -7,7 +7,7 @@
 
 <ion-content>
 
-  <ion-list *ngIf="conversations.length!=0">
+  <ion-list>
 
     <ion-item-sliding *ngFor="let conversation of conversations">
       <ion-item button (click)="navChat(conversation)">

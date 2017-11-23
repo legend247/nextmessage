@@ -10,7 +10,7 @@ import 'rxjs/add/operator/toPromise';
   templateUrl: 'about.html'
 })
 export class AboutPage {
-
+  data = <any>{};
   username = "";
 
   constructor(public navCtrl: NavController,
@@ -28,8 +28,8 @@ export class AboutPage {
         }
         `
       }).toPromise().then(({data}) => {
-        // console.log(data);
-          this.username = data.user.userName;
+          this.data = data;
+          this.username = this.data.user.userName;
       });
   }
 }

@@ -53,24 +53,56 @@ userId = window.localStorage.getItem('userID');
   }
 
   deleteConversation(conversation){
-    // console.log(conversation);
-      this.apollo.mutate({
-        mutation: gql`
-        mutation deleteConversation($conversationID: ID!){
-        	deleteConversation(id:$conversationID){
+
+    this.apollo.query({
+      query: gql`
+      query conversationData($conversationId: ID!) {
+        allConversations(filter: {id: $conversationId} ){
+          id
+          messages {
             id
           }
         }
-        `,variables:{
+      }
+      `, variables: {
+        conversationId: conversation.id
+      }
+    }).toPromise().then(({data})=>{
+      var allData = data;
+      var messages = allData.allConversations[0].messages;
+      console.log("data",allData.allConversations[0].messages);
+      for(let message of messages){
+        this.apollo.mutate({
+          mutation: gql`
+            mutation deleteMessages($messageId:ID!){
+              deleteMessage(id:$messageId){
+                id
+              }
+            }
+          `, variables: {
+            messageId: message.id,
+          }
+        }).subscribe(({data})=>{
+          console.log("M: ",data);
+        });
+      }
+
+      this.apollo.mutate({
+        mutation: gql `
+        mutation deleteConversation($conversationID: ID!){
+          deleteConversation(id:$conversationID){
+            id
+          }
+        }
+        `, variables: {
           conversationID: conversation.id
         }
-      }).subscribe(({data})=>{
-        let index = allConversations.indexOf( x => conversation.id == x.id);
-        console.log(index);
-        if(index > -1){
-          allConversations.splice(index,1);
-        }
+      }).subscribe(({data}) =>{
+        console.log("C: ", data);
       });
+
+    });
+    
   }
 
 }
