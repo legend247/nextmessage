@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController, App } from 'ionic-angular';
+
+import { LoginPage } from '../login/login';
 
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
@@ -14,7 +16,10 @@ export class AboutPage {
   username = "";
 
   constructor(public navCtrl: NavController,
-              public apollo: Angular2Apollo) {
+              public apollo: Angular2Apollo,
+              public loadingCtrl: LoadingController,
+              public app: App
+            ) {
 
   }
   ngOnInit(){
@@ -32,4 +37,18 @@ export class AboutPage {
           this.username = this.data.user.userName;
       });
   }
+
+  logoutUser() {
+     window.localStorage.removeItem('graphcoolToken');
+     this.loading = this.loadingCtrl.create({
+       dismissOnPageChange: true,
+       content: 'Logging Out...'
+     });
+     this.loading.present();
+     this.navCtrl = this.app.getActiveNavs()
+     this.navCtrl[0].setRoot(LoginPage);
+     // console.log(this.app);
+     // this.navCtrl.setRoot(LoginPage);
+      // this.app.getRootNav().setRoot(LoginPage);
+ }
 }
