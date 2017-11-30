@@ -14,7 +14,8 @@ import 'rxjs/add/operator/toPromise';
 export class AboutPage {
   data = <any>{};
   username = "";
-
+  loading = {};
+  nav = {};
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo,
               public loadingCtrl: LoadingController,
@@ -44,11 +45,8 @@ export class AboutPage {
        dismissOnPageChange: true,
        content: 'Logging Out...'
      });
-     this.loading.present();
-     this.navCtrl = this.app.getActiveNavs()
-     this.navCtrl[0].setRoot(LoginPage);
-     // console.log(this.app);
-     // this.navCtrl.setRoot(LoginPage);
-      // this.app.getRootNav().setRoot(LoginPage);
+     (this as any).loading.present();
+     this.nav = this.app.getActiveNavs()
+     this.nav[0].setRoot(LoginPage);
  }
 }

@@ -38,7 +38,6 @@ allData = {};
       pollInterval: 10000,
       fetchPolicy: "network-only"
     }).subscribe(({data}) => {
-      console.log("HOME DATA: ",data);
       this.allConversations = data;
       this.conversations = this.allConversations.allConversations;
     });
@@ -49,7 +48,6 @@ allData = {};
   }
 
   navChat(conversation) {
-    console.log("BEFORE CHAT: ", conversation);
     this.navCtrl.push(Chat, {conversation : conversation.id})
   }
 
@@ -82,8 +80,6 @@ allData = {};
           `, variables: {
             messageId: message.id,
           }
-        }).subscribe(({data})=>{
-          console.log("M: ",data);
         });
       }
 
@@ -97,9 +93,7 @@ allData = {};
         `, variables: {
           conversationID: conversation.id
         }
-      }).subscribe(({data}) =>{
-        console.log("C: ", data);
-      });
+      })
 
     });
 
