@@ -1,8 +1,8 @@
 {
   "name": "nextmessage",
-  "app_id": "a5e995c4",
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "id": "a5e995c4"
 }

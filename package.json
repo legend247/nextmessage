@@ -29,6 +29,7 @@
     "apollo-client": "^1.9.3",
     "apollo-client-rxjs": "^0.6.0-rc.2",
     "apollo-link-core": "^0.5.4",
+    "cordova-android": "8.0.0",
     "cordova-ios": "4.5.4",
     "cordova-plugin-device": "1.1.4",
     "cordova-plugin-ionic-webview": "^1.1.11",
@@ -70,7 +71,8 @@
   "description": "nextmessage: An Ionic project",
   "cordova": {
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ],
     "plugins": {
       "ionic-plugin-keyboard": {},
